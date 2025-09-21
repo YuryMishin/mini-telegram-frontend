@@ -1,0 +1,101 @@
+// 📐 Spacing Variables
+
+// Base spacing unit (используется для расчета всех отступов)
+$spacing-unit: 0.25rem; // 4px
+
+// Spacing scale (кратно базовой единице)
+$spacing-0: 0;
+$spacing-1: $spacing-unit;      // 4px
+$spacing-2: $spacing-unit * 2;  // 8px
+$spacing-3: $spacing-unit * 3;  // 12px
+$spacing-4: $spacing-unit * 4;  // 16px
+$spacing-5: $spacing-unit * 5;  // 20px
+$spacing-6: $spacing-unit * 6;  // 24px
+$spacing-8: $spacing-unit * 8;  // 32px
+$spacing-10: $spacing-unit * 10; // 40px
+$spacing-12: $spacing-unit * 12; // 48px
+$spacing-16: $spacing-unit * 16; // 64px
+$spacing-20: $spacing-unit * 20; // 80px
+$spacing-24: $spacing-unit * 24; // 96px
+
+// Telegram-specific spacing
+$message-padding-x: $spacing-3;  // Горизонтальные отступы в сообщении
+$message-padding-y: $spacing-2;  // Вертикальные отступы в сообщении
+$message-gap: $spacing-2;        // Расстояние между сообщениями
+$message-group-gap: $spacing-4;  // Расстояние между группами сообщений
+
+$dialog-padding-x: $spacing-4;   // Горизонтальные отступы в диалоге
+$dialog-padding-y: $spacing-3;   // Вертикальные отступы в диалоге
+$dialog-gap: $spacing-1;         // Расстояние между диалогами
+
+$sidebar-padding: $spacing-4;    // Отступы в боковой панели
+$header-padding-x: $spacing-4;   // Горизонтальные отступы в заголовке
+$header-padding-y: $spacing-3;   // Вертикальные отступы в заголовке
+
+$input-padding-x: $spacing-4;    // Горизонтальные отступы в поле ввода
+$input-padding-y: $spacing-3;    // Вертикальные отступы в поле ввода
+
+$button-padding-x: $spacing-4;   // Горизонтальные отступы в кнопке
+$button-padding-y: $spacing-2;   // Вертикальные отступы в кнопке
+
+$avatar-margin: $spacing-3;      // Отступы вокруг аватара
+
+// Layout dimensions
+$sidebar-width: 320px;           // Ширина боковой панели
+$sidebar-width-collapsed: 60px;  // Ширина свернутой боковой панели
+$header-height: 64px;            // Высота заголовка
+$input-area-height: 80px;        // Высота области ввода
+$message-max-width: 480px;       // Максимальная ширина сообщения
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius: 8px;
+$border-radius-md: 12px;
+$border-radius-lg: 16px;
+$border-radius-xl: 24px;
+
+// Message-specific border radius
+$message-border-radius: 18px;
+$message-border-radius-sm: 4px; // Для углов которые примыкают к другим сообщениям
+
+// CSS Custom Properties для spacing
+:root {
+  // Base spacing
+  --spacing-1: #{$spacing-1};
+  --spacing-2: #{$spacing-2};
+  --spacing-3: #{$spacing-3};
+  --spacing-4: #{$spacing-4};
+  --spacing-5: #{$spacing-5};
+  --spacing-6: #{$spacing-6};
+  --spacing-8: #{$spacing-8};
+  --spacing-10: #{$spacing-10};
+  --spacing-12: #{$spacing-12};
+  --spacing-16: #{$spacing-16};
+  --spacing-20: #{$spacing-20};
+  --spacing-24: #{$spacing-24};
+
+  // Component spacing
+  --message-padding-x: #{$message-padding-x};
+  --message-padding-y: #{$message-padding-y};
+  --message-gap: #{$message-gap};
+  --message-group-gap: #{$message-group-gap};
+  --message-max-width: #{$message-max-width};
+
+  --dialog-padding-x: #{$dialog-padding-x};
+  --dialog-padding-y: #{$dialog-padding-y};
+  --dialog-gap: #{$dialog-gap};
+
+  --sidebar-width: #{$sidebar-width};
+  --sidebar-width-collapsed: #{$sidebar-width-collapsed};
+  --header-height: #{$header-height};
+  --input-area-height: #{$input-area-height};
+
+  // Border radius
+  --border-radius-sm: #{$border-radius-sm};
+  --border-radius: #{$border-radius};
+  --border-radius-md: #{$border-radius-md};
+  --border-radius-lg: #{$border-radius-lg};
+  --border-radius-xl: #{$border-radius-xl};
+  --message-border-radius: #{$message-border-radius};
+  --message-border-radius-sm: #{$message-border-radius-sm};
+}

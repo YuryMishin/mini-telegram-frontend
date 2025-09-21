@@ -1,0 +1,108 @@
+// 🎨 Color Variables for Telegram-like Theme
+// Эти переменные можно использовать в SCSS, дополняют Tailwind
+
+// Primary Telegram Colors
+$telegram-blue: #0088cc;
+$telegram-blue-dark: #0077b6;
+$telegram-blue-light: #33a3d1;
+
+// Dark Theme Colors
+$telegram-dark: #17212b;
+$telegram-darker: #0e1621;
+$telegram-dark-surface: #1e2832;
+$telegram-dark-hover: #2a3441;
+$telegram-dark-border: #3a4a5c;
+
+// Light Theme Colors
+$telegram-light: #ffffff;
+$telegram-light-surface: #f8fafc;
+$telegram-light-hover: #f1f5f9;
+$telegram-light-border: #e2e8f0;
+
+// Status Colors
+$color-online: #10b981;
+$color-offline: #6b7280;
+$color-away: #f59e0b;
+$color-busy: #ef4444;
+$color-typing: #8b5cf6;
+
+// Message Colors
+$message-own-bg: $telegram-blue;
+$message-own-text: #ffffff;
+$message-other-bg-light: #ffffff;
+$message-other-bg-dark: $telegram-dark-surface;
+$message-other-text-light: #1f2937;
+$message-other-text-dark: #f9fafb;
+
+// System Message Colors
+$message-system-bg: #f3f4f6;
+$message-system-text: #6b7280;
+$message-system-bg-dark: #374151;
+$message-system-text-dark: #9ca3af;
+
+// Semantic Colors (для уведомлений и состояний)
+$color-success: #059669;
+$color-warning: #d97706;
+$color-error: #dc2626;
+$color-info: #2563eb;
+
+// Gradients
+$telegram-gradient: linear-gradient(135deg, #{$telegram-blue} 0%, #{$telegram-blue-dark} 100%);
+$dark-gradient: linear-gradient(135deg, #{$telegram-dark} 0%, #{$telegram-darker} 100%);
+
+// Shadows
+$shadow-message: 0 1px 2px rgba(0, 0, 0, 0.1);
+$shadow-message-hover: 0 4px 12px rgba(0, 0, 0, 0.1);
+$shadow-sidebar: 2px 0 8px rgba(0, 0, 0, 0.05);
+$shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// CSS Custom Properties для динамической темизации
+:root {
+  // Primary colors
+  --color-primary: #{$telegram-blue};
+  --color-primary-dark: #{$telegram-blue-dark};
+  --color-primary-light: #{$telegram-blue-light};
+
+  // Background colors
+  --bg-primary: #{$telegram-light};
+  --bg-secondary: #{$telegram-light-surface};
+  --bg-hover: #{$telegram-light-hover};
+
+  // Text colors
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+
+  // Border colors
+  --border-primary: #{$telegram-light-border};
+  --border-secondary: #d1d5db;
+
+  // Message colors
+  --message-own-bg: #{$message-own-bg};
+  --message-own-text: #{$message-own-text};
+  --message-other-bg: #{$message-other-bg-light};
+  --message-other-text: #{$message-other-text-light};
+
+  // Status colors
+  --color-online: #{$color-online};
+  --color-offline: #{$color-offline};
+  --color-away: #{$color-away};
+  --color-busy: #{$color-busy};
+}
+
+// Dark mode overrides
+.dark {
+  --bg-primary: #{$telegram-dark};
+  --bg-secondary: #{$telegram-dark-surface};
+  --bg-hover: #{$telegram-dark-hover};
+
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+
+  --border-primary: #{$telegram-dark-border};
+  --border-secondary: #4b5563;
+
+  --message-other-bg: #{$message-other-bg-dark};
+  --message-other-text: #{$message-other-text-dark};
+}

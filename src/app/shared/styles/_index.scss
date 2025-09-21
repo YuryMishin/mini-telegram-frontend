@@ -1,0 +1,17 @@
+// 🎨 Shared SCSS modules index file
+// Этот файл импортируется в main styles.scss
+
+// Variables
+@import 'variables/colors';
+@import 'variables/typography';
+@import 'variables/spacing';
+@import 'variables/breakpoints';
+
+// Mixins
+@import 'mixins/animations';
+@import 'mixins/themes';
+@import 'mixins/responsive';
+
+// Theme files
+@import 'themes/light';
+@import 'themes/dark';

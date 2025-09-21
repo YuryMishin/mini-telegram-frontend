@@ -1,0 +1,69 @@
+// 📝 Typography Variables
+
+// Font Families
+$font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-mono: 'Fira Code', 'JetBrains Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Font Sizes
+$font-size-2xs: 0.625rem;   // 10px
+$font-size-xs: 0.75rem;     // 12px
+$font-size-sm: 0.875rem;    // 14px
+$font-size-base: 1rem;      // 16px
+$font-size-lg: 1.125rem;    // 18px
+$font-size-xl: 1.25rem;     // 20px
+$font-size-2xl: 1.5rem;     // 24px
+$font-size-3xl: 1.875rem;   // 30px
+
+// Line Heights
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// Letter Spacing
+$letter-spacing-tight: -0.025em;
+$letter-spacing-normal: 0em;
+$letter-spacing-wide: 0.025em;
+
+// Telegram-specific typography
+$message-font-size: $font-size-sm;
+$message-line-height: $line-height-normal;
+$message-font-weight: $font-weight-normal;
+
+$chat-header-font-size: $font-size-lg;
+$chat-header-font-weight: $font-weight-semibold;
+
+$dialog-title-font-size: $font-size-base;
+$dialog-title-font-weight: $font-weight-medium;
+
+$timestamp-font-size: $font-size-xs;
+$timestamp-font-weight: $font-weight-normal;
+
+// CSS Custom Properties для типографики
+:root {
+  --font-primary: #{$font-primary};
+  --font-mono: #{$font-mono};
+
+  // Message typography
+  --message-font-size: #{$message-font-size};
+  --message-line-height: #{$message-line-height};
+  --message-font-weight: #{$message-font-weight};
+
+  // Header typography
+  --header-font-size: #{$chat-header-font-size};
+  --header-font-weight: #{$chat-header-font-weight};
+
+  // Dialog typography
+  --dialog-title-font-size: #{$dialog-title-font-size};
+  --dialog-title-font-weight: #{$dialog-title-font-weight};
+
+  // Timestamp typography
+  --timestamp-font-size: #{$timestamp-font-size};
+  --timestamp-font-weight: #{$timestamp-font-weight};
+}
