@@ -1,0 +1,518 @@
+// 🌙 Dark Theme Variables and Styles
+
+// Dark theme CSS custom properties
+.dark {
+  // Primary colors (same as light for consistency)
+  --color-primary: #{$telegram-blue};
+  --color-primary-dark: #{$telegram-blue-dark};
+  --color-primary-light: #{$telegram-blue-light};
+  --color-primary-hover: #{$telegram-blue-light};
+
+  // Background colors
+  --bg-primary: #{$telegram-dark};
+  --bg-secondary: #{$telegram-dark-surface};
+  --bg-tertiary: #{$telegram-darker};
+  --bg-hover: #{$telegram-dark-hover};
+  --bg-active: #3a4a5c;
+  --bg-disabled: #2d3748;
+
+  // Surface colors (для карточек, модалок)
+  --surface-primary: #{$telegram-dark};
+  --surface-secondary: #{$telegram-dark-surface};
+  --surface-elevated: #{$telegram-dark-hover};
+
+  // Text colors
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  --text-muted: #6b7280;
+  --text-disabled: #4b5563;
+  --text-inverse: #1f2937;
+  --text-link: #{$telegram-blue-light};
+  --text-link-hover: #{$telegram-blue};
+
+  // Border colors
+  --border-primary: #{$telegram-dark-border};
+  --border-secondary: #4b5563;
+  --border-tertiary: #374151;
+  --border-focus: #{$telegram-blue};
+  --border-error: #ef4444;
+  --border-success: #10b981;
+  --border-warning: #f59e0b;
+
+  // Message specific colors
+  --message-own-bg: #{$message-own-bg};
+  --message-own-text: #{$message-own-text};
+  --message-own-border: #{$message-own-bg};
+  --message-other-bg: #{$message-other-bg-dark};
+  --message-other-text: #{$message-other-text-dark};
+  --message-other-border: #{$telegram-dark-border};
+  --message-system-bg: #{$message-system-bg-dark};
+  --message-system-text: #{$message-system-text-dark};
+
+  // Status colors (brighter versions for dark theme)
+  --status-online: #34d399;
+  --status-offline: #9ca3af;
+  --status-away: #fbbf24;
+  --status-busy: #f87171;
+  --status-typing: #a78bfa;
+
+  // Semantic colors (adjusted for dark theme)
+  --color-success: #10b981;
+  --color-success-light: rgba(16, 185, 129, 0.2);
+  --color-success-dark: #065f46;
+  --color-warning: #f59e0b;
+  --color-warning-light: rgba(245, 158, 11, 0.2);
+  --color-warning-dark: #92400e;
+  --color-error: #ef4444;
+  --color-error-light: rgba(239, 68, 68, 0.2);
+  --color-error-dark: #991b1b;
+  --color-info: #{$telegram-blue};
+  --color-info-light: rgba(0, 136, 204, 0.2);
+  --color-info-dark: #1e40af;
+
+  // Enhanced shadows for dark theme
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+  --shadow-message: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-sidebar: 2px 0 8px rgba(0, 0, 0, 0.3);
+
+  // Interactive states
+  --focus-ring: 0 0 0 2px #{$telegram-blue}66; // 66 = 40% opacity (higher for dark)
+  --focus-ring-error: 0 0 0 2px #ef444466;
+  --focus-ring-success: 0 0 0 2px #10b98166;
+}
+
+// Dark theme specific component styles
+.dark {
+  // Enhanced scrollbar for dark theme
+  * {
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  // Selection colors for dark theme
+  ::selection {
+    background-color: rgba($telegram-blue, 0.4);
+    color: var(--text-primary);
+  }
+
+  // Placeholder colors
+  ::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+  }
+
+  // Focus outlines
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  // Input autofill styles for dark theme
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--bg-secondary) inset;
+    -webkit-text-fill-color: var(--text-primary);
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+// Dark theme component overrides
+.dark {
+  // Button variations in dark theme
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--text-inverse);
+    border-color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary-light);
+      border-color: var(--color-primary-light);
+      box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.4);
+    }
+
+    &:focus {
+      box-shadow: var(--focus-ring);
+    }
+
+    &:active {
+      background-color: var(--color-primary-dark);
+      transform: translateY(1px);
+    }
+  }
+
+  .btn-secondary {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-primary);
+
+    &:hover {
+      background-color: var(--bg-hover);
+      border-color: var(--border-secondary);
+    }
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--text-secondary);
+
+    &:hover {
+      background-color: var(--bg-hover);
+      color: var(--text-primary);
+    }
+  }
+
+  .btn-danger {
+    background-color: var(--color-error);
+    color: var(--text-primary);
+
+    &:hover {
+      background-color: #dc2626;
+      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+  }
+
+  // Card styles for dark theme
+  .card {
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border-tertiary);
+    box-shadow: var(--shadow-md);
+
+    &:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-secondary);
+    }
+  }
+
+  // Modal styles for dark theme
+  .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .modal-content {
+    background-color: var(--surface-elevated);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-primary);
+  }
+
+  // Toast styles for dark theme
+  .toast {
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border-secondary);
+    box-shadow: var(--shadow-xl);
+
+    &.toast-success {
+      border-left: 4px solid var(--color-success);
+      background-color: var(--color-success-light);
+
+      .toast-icon {
+        color: var(--color-success);
+      }
+    }
+
+    &.toast-error {
+      border-left: 4px solid var(--color-error);
+      background-color: var(--color-error-light);
+
+      .toast-icon {
+        color: var(--color-error);
+      }
+    }
+
+    &.toast-warning {
+      border-left: 4px solid var(--color-warning);
+      background-color: var(--color-warning-light);
+
+      .toast-icon {
+        color: var(--color-warning);
+      }
+    }
+
+    &.toast-info {
+      border-left: 4px solid var(--color-info);
+      background-color: var(--color-info-light);
+
+      .toast-icon {
+        color: var(--color-info);
+      }
+    }
+  }
+
+  // Form elements for dark theme
+  .form-input {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    color: var(--text-primary);
+
+    &:focus {
+      border-color: var(--border-focus);
+      box-shadow: var(--focus-ring);
+      background-color: var(--surface-elevated);
+    }
+
+    &:disabled {
+      background-color: var(--bg-disabled);
+      color: var(--text-disabled);
+      border-color: var(--border-tertiary);
+    }
+
+    &.error {
+      border-color: var(--border-error);
+      background-color: var(--color-error-light);
+
+      &:focus {
+        box-shadow: var(--focus-ring-error);
+      }
+    }
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+  }
+
+  // Dropdown styles for dark theme
+  .dropdown-menu {
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border-secondary);
+    box-shadow: var(--shadow-xl);
+
+    .dropdown-item {
+      color: var(--text-primary);
+
+      &:hover {
+        background-color: var(--bg-hover);
+        color: var(--text-primary);
+      }
+
+      &:active {
+        background-color: var(--bg-active);
+      }
+
+      &.danger {
+        color: #f87171;
+
+        &:hover {
+          background-color: var(--color-error-light);
+        }
+      }
+    }
+
+    .dropdown-divider {
+      border-color: var(--border-tertiary);
+    }
+  }
+
+  // Telegram specific dark theme styles
+  .message-list {
+    background-color: var(--bg-primary);
+  }
+
+  .message-bubble {
+    &.own {
+      background-color: var(--message-own-bg);
+      color: var(--message-own-text);
+    }
+
+    &.other {
+      background-color: var(--message-other-bg);
+      color: var(--message-other-text);
+      border: 1px solid var(--message-other-border);
+    }
+
+    &.system {
+      background-color: var(--message-system-bg);
+      color: var(--message-system-text);
+    }
+  }
+
+  .dialog-item {
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-tertiary);
+
+    &:hover {
+      background-color: var(--bg-hover);
+    }
+
+    &.selected {
+      background-color: var(--color-info-light);
+      border-left: 4px solid var(--color-primary);
+    }
+
+    &.unread {
+      background-color: var(--bg-secondary);
+    }
+  }
+
+  .chat-header {
+    background-color: var(--surface-primary);
+    border-bottom: 1px solid var(--border-primary);
+
+    .user-name {
+      color: var(--text-primary);
+    }
+
+    .user-status {
+      color: var(--text-secondary);
+    }
+  }
+
+  .sidebar {
+    background-color: var(--surface-primary);
+    border-right: 1px solid var(--border-primary);
+  }
+
+  .message-input-area {
+    background-color: var(--surface-primary);
+    border-top: 1px solid var(--border-primary);
+
+    .message-input {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-primary);
+      color: var(--text-primary);
+
+      &:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 2px rgba(0, 136, 204, 0.2);
+      }
+    }
+  }
+
+  // Status indicators for dark theme
+  .status-online {
+    color: var(--status-online);
+
+    &::before {
+      background-color: var(--status-online);
+    }
+  }
+
+  .status-offline {
+    color: var(--status-offline);
+
+    &::before {
+      background-color: var(--status-offline);
+    }
+  }
+
+  .status-away {
+    color: var(--status-away);
+
+    &::before {
+      background-color: var(--status-away);
+    }
+  }
+
+  .status-busy {
+    color: var(--status-busy);
+
+    &::before {
+      background-color: var(--status-busy);
+    }
+  }
+
+  // Typing indicator for dark theme
+  .typing-indicator {
+    color: var(--status-typing);
+
+    .typing-dot {
+      background-color: var(--status-typing);
+    }
+  }
+
+  // Context menu for dark theme
+  .context-menu {
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border-secondary);
+    box-shadow: var(--shadow-xl);
+
+    .context-menu-item {
+      color: var(--text-primary);
+
+      &:hover {
+        background-color: var(--bg-hover);
+      }
+
+      &.danger {
+        color: #f87171;
+
+        &:hover {
+          background-color: var(--color-error-light);
+        }
+      }
+    }
+  }
+}
+
+// High contrast mode for dark theme
+@media (prefers-contrast: high) {
+  .dark {
+    --bg-primary: #000000;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-primary: #666666;
+    --border-secondary: #999999;
+    --color-primary: #{$telegram-blue-light};
+  }
+}
+
+// Reduced motion preferences
+@media (prefers-reduced-motion: reduce) {
+  .dark {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+// System dark mode detection
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark) {
+    // Automatically apply dark theme variables if system is in dark mode
+    // and no explicit theme is set
+    @extend .dark;
+  }
+}
+
+// Print styles for dark theme (invert to light)
+@media print {
+  .dark {
+    --bg-primary: white !important;
+    --bg-secondary: white !important;
+    --text-primary: black !important;
+    --text-secondary: black !important;
+    --border-primary: black !important;
+
+    * {
+      background: white !important;
+      color: black !important;
+      box-shadow: none !important;
+    }
+
+    .message-bubble {
+      border: 1px solid black !important;
+
+      &.own {
+        background: #f0f0f0 !important;
+        color: black !important;
+      }
+    }
+  }
+}

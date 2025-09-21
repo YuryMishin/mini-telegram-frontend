@@ -1,0 +1,316 @@
+// 🌙 Theme Mixins для переключения темной/светлой темы
+
+// Основной миксин для применения цветов в зависимости от темы
+@mixin theme-aware($property, $light-value, $dark-value) {
+  #{$property}: #{$light-value};
+
+  .dark & {
+    #{$property}: #{$dark-value};
+  }
+}
+
+// Миксин для фона с поддержкой тем
+@mixin theme-background($light-bg, $dark-bg) {
+  @include theme-aware(background-color, $light-bg, $dark-bg);
+}
+
+// Миксин для текста с поддержкой тем
+@mixin theme-text($light-text, $dark-text) {
+  @include theme-aware(color, $light-text, $dark-text);
+}
+
+// Миксин для границ с поддержкой тем
+@mixin theme-border($light-border, $dark-border, $width: 1px, $style: solid) {
+  border: $width $style $light-border;
+
+  .dark & {
+    border-color: $dark-border;
+  }
+}
+
+// Миксин для теней с поддержкой тем
+@mixin theme-shadow($light-shadow, $dark-shadow) {
+  box-shadow: $light-shadow;
+
+  .dark & {
+    box-shadow: $dark-shadow;
+  }
+}
+
+// Telegram специфичные темы
+@mixin telegram-message-bubble($is-own: false) {
+  @if $is-own {
+    // Собственные сообщения
+    @include theme-background($telegram-blue, $telegram-blue);
+    @include theme-text(white, white);
+    border-radius: 18px 18px 4px 18px;
+    margin-left: auto;
+  } @else {
+    // Чужие сообщения
+    @include theme-background(white, $telegram-dark-surface);
+    @include theme-text($telegram-light-border, white);
+    @include theme-border($telegram-light-border, $telegram-dark-border);
+    border-radius: 18px 18px 18px 4px;
+    margin-right: auto;
+  }
+
+  padding: 8px 12px;
+  max-width: 480px;
+  word-wrap: break-word;
+  position: relative;
+}
+
+// Диалог в списке
+@mixin dialog-item-theme() {
+  @include theme-background(white, $telegram-dark);
+  @include theme-text($telegram-light-border, white);
+  @include theme-border(transparent, transparent);
+  transition: all 0.2s ease;
+
+  &:hover {
+    @include theme-background($telegram-light-hover, $telegram-dark-hover);
+  }
+
+  &.selected {
+    @include theme-background(rgba($telegram-blue, 0.1), rgba($telegram-blue, 0.2));
+    border-left: 4px solid $telegram-blue;
+  }
+}
+
+// Сайдбар темизация
+@mixin sidebar-theme() {
+  @include theme-background($telegram-light, $telegram-dark);
+  @include theme-border($telegram-light-border, $telegram-dark-border, 1px, solid);
+  border-right: 1px solid;
+
+  .sidebar-header {
+    @include theme-background($telegram-light-surface, $telegram-dark-surface);
+    @include theme-border(transparent, $telegram-dark-border, 0, none);
+    border-bottom: 1px solid;
+  }
+}
+
+// Хедер чата
+@mixin chat-header-theme() {
+  @include theme-background($telegram-light, $telegram-dark);
+  @include theme-border($telegram-light-border, $telegram-dark-border, 1px, solid);
+  border-bottom: 1px solid;
+
+  h1, h2, h3 {
+    @include theme-text($telegram-light-border, white);
+  }
+
+  .status-text {
+    @include theme-text(rgba($telegram-light-border, 0.7), rgba(white, 0.7));
+  }
+}
+
+// Поле ввода сообщения
+@mixin message-input-theme() {
+  .input-container {
+    @include theme-background($telegram-light, $telegram-dark);
+    @include theme-border($telegram-light-border, $telegram-dark-border, 1px, solid);
+    border-top: 1px solid;
+    padding: 16px;
+  }
+
+  .message-input {
+    @include theme-background($telegram-light-surface, $telegram-dark-surface);
+    @include theme-text($telegram-light-border, white);
+    @include theme-border($telegram-light-border, $telegram-dark-border);
+    border-radius: 24px;
+
+    &:focus {
+      @include theme-border($telegram-blue, $telegram-blue);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($telegram-blue, 0.2);
+    }
+
+    &::placeholder {
+      @include theme-text(rgba($telegram-light-border, 0.5), rgba(white, 0.5));
+    }
+  }
+}
+
+// Скроллбар темизация
+@mixin themed-scrollbar() {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    @include theme-background(transparent, transparent);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @include theme-background(rgba($telegram-light-border, 0.3), rgba(white, 0.2));
+    border-radius: 3px;
+
+    &:hover {
+      @include theme-background(rgba($telegram-light-border, 0.5), rgba(white, 0.3));
+    }
+  }
+
+  // Для Firefox
+  scrollbar-width: thin;
+  scrollbar-color: rgba($telegram-light-border, 0.3) transparent;
+
+  .dark & {
+    scrollbar-color: rgba(white, 0.2) transparent;
+  }
+}
+
+// Контекстное меню
+@mixin context-menu-theme() {
+  @include theme-background(white, $telegram-dark-surface);
+  @include theme-border($telegram-light-border, $telegram-dark-border);
+  @include theme-shadow(
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 4px 6px -1px rgba(0, 0, 0, 0.3)
+  );
+  border-radius: 8px;
+  padding: 4px;
+  min-width: 160px;
+
+  .menu-item {
+    @include theme-text($telegram-light-border, white);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover {
+      @include theme-background($telegram-light-hover, $telegram-dark-hover);
+    }
+
+    &.danger {
+      @include theme-text(#dc2626, #f87171);
+
+      &:hover {
+        @include theme-background(rgba(#dc2626, 0.1), rgba(#dc2626, 0.2));
+      }
+    }
+  }
+}
+
+// Модальное окно
+@mixin modal-theme() {
+  .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .dark & {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .modal-content {
+    @include theme-background(white, $telegram-dark-surface);
+    @include theme-shadow(
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 20px 25px -5px rgba(0, 0, 0, 0.4)
+    );
+    border-radius: 12px;
+
+    .modal-header {
+      @include theme-border(transparent, $telegram-dark-border, 0, none);
+      border-bottom: 1px solid;
+
+      h2 {
+        @include theme-text($telegram-light-border, white);
+      }
+    }
+
+    .modal-body {
+      @include theme-text($telegram-light-border, rgba(white, 0.9));
+    }
+  }
+}
+
+// Состояние загрузки
+@mixin loading-theme() {
+  .skeleton {
+    @include theme-background($telegram-light-surface, $telegram-dark-surface);
+
+    &::after {
+      background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+      );
+
+      .dark & {
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+        );
+      }
+    }
+  }
+}
+
+// Утилитарные миксины
+@mixin glass-morphism($blur: 10px, $opacity: 0.8) {
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+
+  @include theme-background(
+      rgba(255, 255, 255, $opacity),
+      rgba($telegram-dark, $opacity)
+  );
+
+  @include theme-border(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.1)
+  );
+}
+
+// Responsive темы (для мобильных устройств)
+@mixin mobile-theme-adjustments() {
+  @media (max-width: 768px) {
+    .message-bubble {
+      max-width: calc(100vw - 80px);
+    }
+
+    .sidebar {
+      @include theme-background($telegram-light, $telegram-dark);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 50;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+
+      &.open {
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+// Печать стилей (для возможного экспорта чатов)
+@mixin print-theme() {
+  @media print {
+    * {
+      background: white !important;
+      color: black !important;
+      box-shadow: none !important;
+    }
+
+    .sidebar,
+    .message-input,
+    button:not(.print-button) {
+      display: none !important;
+    }
+
+    .message-bubble {
+      border: 1px solid #ccc !important;
+      margin: 4px 0 !important;
+    }
+  }
+}
